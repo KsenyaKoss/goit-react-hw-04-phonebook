@@ -18,14 +18,9 @@ export const App = () => {
     data?.length && setContacts(JSON.parse(data));
   }, []);
 
-  useEffect(
-    (_, prevState) => {
-      if (prevState !== contacts.length) {
-        localStorage.setItem('contacts_key', JSON.stringify(contacts));
-      }
-    },
-    [contacts]
-  );
+  useEffect(() => {
+    localStorage.setItem('contacts_key', JSON.stringify(contacts));
+  }, [contacts]);
 
   const handleAddContact = (name, number) => {
     const existingContact = contacts.find(
